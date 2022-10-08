@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax_test</title>
+</head>
+<body>
+<button type="button" onclick="addBlock();">ajax</button>
+<div class="ajax" style="display: flex;">
+
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    var test_num = 5;
+    var test_string = 'ajax';
+    function addBlock() {
+        $.ajax({
+            type: "get",
+            url: "/ajax/test",
+            data: {
+                testNum: test_num,
+                testString: test_string
+            },
+            datatype: "text",
+            success: function (res) {
+                console.log('test_num + test_string : ' + res);
+                const html =
+                    `
+                    <div style="background-color: blue; margin: 5px; width: 100px; height: 100px;">
+                    </div>
+                    `;
+                $('.ajax').append(html);
+            },
+            error: function () {
+                alert('실패');
+            }
+        });
+    }
+</script>
+</body>
+</html>

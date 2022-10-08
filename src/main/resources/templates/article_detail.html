@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Article</title>
+</head>
+<body>
+<h1 th:text="${article.subject}"></h1>
+<br>
+<div th:text="${article.content}"></div>
+<br>
+<div th:text="${article.createDate}"></div>
+<button type="button" onclick="articleMessage()">버튼</button>
+<script th:inline="javascript">
+    var articleObject = [[${article}]];
+
+    function articleMessage() {
+        //article의 정보를 alert창으로 표시한다.
+        alert('article : ' + articleObject
+            + '\n제목 : ' + articleObject.subject
+            + '\n내용 : ' + articleObject.content
+            + '\n시간 : ' + articleObject.createDate);
+    }
+</script>
+</body>
+</html>
